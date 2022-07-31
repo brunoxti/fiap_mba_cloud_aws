@@ -2,20 +2,16 @@ version: 0.2
 
 phases:
   install:
+    runtine-versions:
+      nodejs: 16
     commands:
       - echo Installing dependency...
-      - npm install -g next
-      - yarn
-  pre_build:
-    commands:
-      - printenv > .env
+      - npm install
   build:
     commands:
       - echo Compiling the Node.js code
-      - yarn build
+      - npm run-script build
   post_build:
     commands:
-      - echo Build completed on `date`
-artifacts:
-  files:
-    - '**/*'
+      - echo Build completed
+      - aws s3 cp build s3://mba-fiap-trabalho --recursive --acl public-read
