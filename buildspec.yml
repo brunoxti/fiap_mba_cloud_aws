@@ -14,4 +14,4 @@ phases:
   post_build:
     commands:
       - echo Build completed
-      - aws s3 cp build s3://mba-fiap-trabalho --recursive --acl public-read
+      - aws s3 cp build s3://elasticbeanstalk-us-east-2-611071826990 --recursive --acl public-read
